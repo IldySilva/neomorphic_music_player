@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:neomorphic_music_player/boxshadow.dart';
 import 'package:neomorphic_music_player/custom_icon_button.dart';
 
 void main() {
@@ -57,29 +56,52 @@ class _AppState extends State<App> {
                 ],
               ),
             ),
-            Container(
-              height: 300,
-              width: 300,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.black45, width: 10),
-                  color: Theme.of(context).colorScheme.background,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        offset: const Offset(5, 5),
-                        blurRadius: 15,
-                        spreadRadius: 4),
-                    BoxShadow(
-                        color: Theme.of(context).colorScheme.background,
-                        offset: const Offset(-5, -5),
-                        blurRadius: 15,
-                        spreadRadius: 2)
-                  ]),
-              child: const Icon(
-                Icons.flutter_dash_rounded,
+
+            LongPressDraggable(
+              feedback: const FlutterLogo(
+                textColor: Colors.orange,
                 size: 100,
-                color: Colors.grey,
+                style: FlutterLogoStyle.stacked,
+              ),
+              child: const FlutterLogo(
+                textColor: Colors.green,
+                size: 100,
+                style: FlutterLogoStyle.stacked,
+              ),
+              onDragEnd: (details) {
+                setState(() {
+
+
+                });
+              },
+            ),
+
+            Draggable(
+              feedback:Container(),
+              child: Container(
+                height: 300,
+                width: 300,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.black45, width: 10),
+                    color: Theme.of(context).colorScheme.background,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          offset: const Offset(5, 5),
+                          blurRadius: 15,
+                          spreadRadius: 4),
+                      BoxShadow(
+                          color: Theme.of(context).colorScheme.background,
+                          offset: const Offset(-5, -5),
+                          blurRadius: 15,
+                          spreadRadius: 2)
+                    ]),
+                child: const Icon(
+                  Icons.flutter_dash_rounded,
+                  size: 100,
+                  color: Colors.grey,
+                ),
               ),
             ),
             const Column(
